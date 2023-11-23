@@ -20,7 +20,8 @@ export class App extends Component {
   componentDidMount() {
     const contacts = localStorage.getItem('contacts')
     const parsedContacts = JSON.parse(contacts)
-    this.setState({contacts:parsedContacts})
+    if (contacts) this.setState({ contacts: parsedContacts })
+    else this.setState({todo:data})
 
   }
   componentDidUpdate(prevProps, prevState) {
@@ -32,7 +33,7 @@ export class App extends Component {
 
   ContactFilter = evt => {
   this.setState({filter: evt.currentTarget.value})
-  console.log(this.state.filter);
+  
   };
 
 getVisibleContacts = () => {
